@@ -8,6 +8,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 import { MatListModule } from "@angular/material/list";
 import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { NgModule } from "@angular/core";
 
 import { AppRoutingModule } from "./app-routing.module";
@@ -44,6 +45,7 @@ import { AuthService } from "./services/auth-service";
     MatInputModule,
     MatListModule,
     MatSidenavModule,
+    MatProgressSpinnerModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],

@@ -8,11 +8,16 @@ type LoginPayload = {
   password: string;
 };
 
+type UserInfo = {
+  token: string;
+  user_id: number;
+};
+
 @Injectable()
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  login(payload: LoginPayload): Observable<any> {
-    return this.http.post(`${environment.apiUrl}/auth`, payload);
+  login(payload: LoginPayload): Observable<UserInfo> {
+    return this.http.post<UserInfo>(`${environment.apiUrl}/auth`, payload);
   }
 }
