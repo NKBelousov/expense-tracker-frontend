@@ -1,5 +1,5 @@
 <mat-sidenav-container class="navigation-container">
-  <mat-sidenav mode="side" opened>
+  <mat-sidenav mode="side" opened *ngIf="isAuthenticated()">
     <mat-list>
       <mat-list-item *ngFor="let route of routes">
         <button mat-button>

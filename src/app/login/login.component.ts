@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder } from "@angular/forms";
 import { AuthService } from "../services/auth-service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-login",
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -36,6 +38,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(payload).subscribe(
       () => {
         this.isLoading = false;
+        this.router.navigate(["/"]);
       },
       response => {
         this.isLoading = false;

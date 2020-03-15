@@ -17,7 +17,22 @@ type UserInfo = {
 export class AuthService {
   constructor(private http: HttpClient) {}
 
+  token = "";
+
+  isAuthenticated(): boolean {
+    return this.token !== "";
+  }
+
   login(payload: LoginPayload): Observable<UserInfo> {
-    return this.http.post<UserInfo>(`${environment.apiUrl}/auth`, payload);
+    const request = this.http.post<UserInfo>(
+      `${environment.apiUrl}/auth`,
+      payload
+    );
+
+    request.subscribe(userInfo => {
+      this.token = userInfo.token;
+    });
+
+    return request;
   }
 }

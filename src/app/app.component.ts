@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { AuthService } from "./services/auth-service";
 
 type Route = {
   icon: string;
@@ -12,6 +13,8 @@ type Route = {
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
+  constructor(private authService: AuthService) {}
+
   title = "expense-tracker-frontend";
 
   routes: Route[] = [
@@ -36,4 +39,8 @@ export class AppComponent {
       href: "/logout",
     },
   ];
+
+  isAuthenticated(): boolean {
+    return this.authService.isAuthenticated();
+  }
 }
