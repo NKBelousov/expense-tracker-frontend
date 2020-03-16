@@ -1,1 +1,14 @@
-<p>payment-list works!</p>
+<h1 class="mat-display-1">Total payments: {{ items.length }}</h1>
+<mat-card *ngFor="let item of items">
+  <mat-card-content>
+    <header class="mat-headline">
+      {{ item.name }}
+      (<span class="mat-title">{{ item.cost | currency }}</span
+      >)
+    </header>
+    <div class="mat-caption">{{ item.created_at | date }}</div>
+  </mat-card-content>
+</mat-card>
+<button class="add" mat-fab (click)="onCreate()">
+  <mat-icon>add</mat-icon>
+</button>
