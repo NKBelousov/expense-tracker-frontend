@@ -19,7 +19,7 @@ import { PaymentListComponent } from "./payment-list/payment-list.component";
 import { AboutComponent } from "./about/about.component";
 import { LogoutComponent } from "./logout/logout.component";
 import { LoginComponent } from "./login/login.component";
-import { AuthService } from "./services/auth-service";
+import { AuthService } from "./services/auth.service";
 
 @NgModule({
   declarations: [

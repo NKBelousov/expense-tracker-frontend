@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { PaymentService } from "../services/payment.service";
+import { Payment } from "../types/payment";
 
 @Component({
   selector: "app-payment-list",
@@ -6,20 +8,17 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./payment-list.component.scss"],
 })
 export class PaymentListComponent implements OnInit {
-  constructor() {}
+  constructor(private paymentService: PaymentService) {}
 
-  ngOnInit(): void {}
+  collection: Payment[] = [];
+  isLoading = true;
 
-  items = [
-    {
-      id: 0,
-      user_id: 0,
-      type_id: 0,
-      name: "Payment",
-      cost: 42,
-      created_at: new Date().getTime(),
-    },
-  ];
+  ngOnInit(): void {
+    this.paymentService.getCollection().subscribe(response => {
+      this.collection = response.data;
+      this.isLoading = false;
+    });
+  }
 
   onCreate(): void {
     console.log("create");
